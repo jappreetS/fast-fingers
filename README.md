@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+## Application URL:
+https://fast-fingers-react.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## MVP Requirement
 
-## Available Scripts
+1. Ask player to enter his/her name before starting the game.
 
-In the project directory, you can run:
+   - Do not ask player to enter his/her name again if he plays the game again in the same session.
+   - Show proper error message if player doesn't enter his/her name and clicks on `START GAME`.
 
-### `yarn start`
+2. Set Default difficulty level to `EASY`. User should be able to change the difficulty level using dropdown.
+3. Start the game on `START GAME` button click.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. Show random word from dictionary and an input box on game screen.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- For `EASY` difficulty level, word length should be less than or equal to 4.
+- For `MEDIUM` difficulty level, word length should be between 5-8(noth numbers included).
+- For `HARD` difficulty level, word length should be greater than 8.
 
-### `yarn test`
+5. As soon as the typed word matches the word shown on screen, it should we considered submitted (pressing "ENTER" button shall not be required to submit a word). Empty the input box after a successful attempt.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6. A timer shall be shown on the screen for every word and the maximum time that an user is allowed to type a word will depend on the difficulty factor. Refer to the formula provided below to calculate the maximum time allowed :
 
-### `yarn build`
+Timer value = (Number of letters in the word) / (Difficulty factor)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Round the timer value to nearest integer bigger than the value.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Initially the difficulty factor would be 1 and it will keep increasing as the player progresses in the game and the timer value is guaranteed to be greater than or equal to 2 seconds that means a player must get at least 2 seconds to type a word. So whenever the calculated value is found to be less than 2 seconds, it should be rounded off to 2 seconds always.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. There are three levels in game: EASY, MEDIUM and HARD
 
-### `yarn eject`
+Difficulty factor for easy level: 1
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Difficulty factor for medium level: 1.5
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Difficulty factor for hard level: 2
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+8. Increase difficulty factor by 0.01 after every successful word attempt.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+9. Change the game level if difficulty factor crosses particular levels difficulty factor.
 
-## Learn More
+10. Player should be able to stop the game by clicking on `STOP GAME` button
+11. **Game score for the player is the total time player was able to remain in the game before game gets over either because his/her time runs out for a particular word or player Stops the game**.
+12. Show previous games score for player in a sidebar
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+13. Show best score for player
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tech stack
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- HTML, CSS, JavaScript
+- ReactJS
+- SCSS
